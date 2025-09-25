@@ -36,6 +36,27 @@
 
 ---
 
+## 프로젝트 구조 및 개발 지침 초안
+
+초기 프로토타입은 PNPM 워크스페이스 기반으로 구성했습니다. 루트에서 아래 명령을 사용하면 3D 클라이언트 앱을 실행/검증할 수 있습니다.
+
+```bash
+pnpm install        # 의존성 설치 (인터넷 접속 필요)
+pnpm dev            # 기본 클라이언트(yut-client) 개발 서버 실행
+pnpm lint           # ESLint 기반 코드 규약 검사
+pnpm test           # Vitest 단위 테스트 실행
+```
+
+### apps/yut-client
+
+* **Vite + React + TypeScript** 환경으로 구성된 3D 클라이언트.
+* **three.js / React Three Fiber / drei** 조합으로 윷판, 조명, 카메라 궤도를 표현.
+* **zustand** 상태 관리로 던지기/턴/기록 스토어를 구성하고, 규칙 모듈(`src/game/logic.ts`)에 윷 결과 테이블과 테스트를 정의.
+* **WebGPU → WebGL2 폴백** 전략을 준비하기 위해 `src/renderer/createRenderer.ts`에서 브라우저 지원 정보를 탐지.
+* 테스트(`pnpm --filter yut-client test`)는 던지기 결과(도/개/걸/윷/모) 및 말 초기화 로직을 검증.
+
+후속 단계에서는 Colyseus 기반 멀티플레이, WebXR, 물리엔진(Rapier) 등을 `apps` 혹은 `packages` 디렉터리에 추가해 확장할 계획입니다.
+
 ## 3) Web 기반 3D 개발 최신 기술 스택 (제안)
 
 ### 렌더링/엔진

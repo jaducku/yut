@@ -1,0 +1,18 @@
+{
+  "name": "yut-monorepo",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "pnpm --filter yut-client dev",
+    "build": "pnpm --filter yut-client build",
+    "lint": "pnpm --filter yut-client lint",
+    "test": "pnpm --filter yut-client test"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.0"
+  }
+}
